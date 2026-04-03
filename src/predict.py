@@ -1,6 +1,4 @@
-from unittest import result
-
-from src.train_category_model import clean_text
+from src.utils import clean_text
 import joblib
 
 def predict_category(text):
@@ -60,12 +58,16 @@ def detect_risk(text, sentiment, category):
 
 def generate_reply(category):
     if category == "payment_issue":
-        return "We apologize. Your payment/refund issue is being reviewed."
+        return "We sincerely apologize for the inconvenience. It appears you are facing a payment or refund-related issue. " \
+        "Our team is currently reviewing your request and will ensure it is resolved as quickly as possible. Thank you for your patience."
+    
     elif category == "account_issue":
-        return "We're sorry for the trouble. Please try resetting your account or contact support for assistance."
+        return "We're sorry for the inconvenience. It seems you're facing an account-related issue. Please try resetting your credentials or " \
+               "contact our support team for further assistance. We're here to help resolve this as quickly as possible."
+    
     else:
-        return "Thank you for your message. Our team will respond shortly."
-
+        return "Thank you for reaching out. We have received your request and our team will review it shortly. " \
+        "We'll get back to you as soon as possible with an update."
 
 
 def analyze_complaint(text):
